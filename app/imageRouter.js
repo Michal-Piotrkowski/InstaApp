@@ -1,14 +1,18 @@
 const getRequestData = require('./getRequestData.js');
 const controller = require('./fileController.js')
+const controllerT = require('./tagsController.js')
 const imageRouter = async (request, response) => {
 
     switch (request.method) {
         case "GET":
-            if (request.url == "/api/photosAll") {
+            if (request.url == "/api/photos/All") {
                 controller.returnFiles(request, response)
             }
-            if (request.url.includes("/api/photo/")) {
+            if (request.url.includes("/api/photos/")) {
                 controller.returnFile(request, response)
+            }
+            if (request.url.includes("/api/photos/tags")) {
+                controllerT.getPhotoTags(request, response)
             }
         case "POST":
             if (request.url == "/api/photos") {
@@ -26,8 +30,18 @@ const imageRouter = async (request, response) => {
 
             break;
         case "DELETE":
-            if (request.url.includes("/api/photodel/")) {
+            if (request.url.includes("/api/photos/del/")) {
                 controller.deleteFile(request, response)
+            }
+        case "PATCH":
+            if (request.url.includes("/api/photos/tasks")) {
+                await controller.editFile(request, response)
+            }
+            if (request.url == "/api/photos/tags") {
+                await controllerT.editTag(request, response)
+            }
+            if (request.url == "/api/photos/tags/mass") {
+                await controllerT.editTags(request, response)
             }
     }
 }

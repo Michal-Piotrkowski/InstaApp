@@ -17,8 +17,8 @@ const tagsRouter = async (request, response) => {
                 controller.getOne(request, response)
             }
         case "POST":
-            if (request.url.includes("/api/tagsP/")) {
-                controller.saveTag(request, response)
+            if (request.url.includes("/api/tagsP")) {
+                await controller.saveTag(request, response)
             }
             else if (request.url == "/api/photosAll") {
 
@@ -35,6 +35,7 @@ const tagsRouter = async (request, response) => {
             if (request.url.includes("/api/photodel/")) {
                 controller.deleteFile(request, response)
             }
+            break;
     }
 }
 
