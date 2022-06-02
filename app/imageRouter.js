@@ -8,11 +8,11 @@ const imageRouter = async (request, response) => {
             if (request.url == "/api/photos/All") {
                 controller.returnFiles(request, response)
             }
-            if (request.url.includes("/api/photos/")) {
-                controller.returnFile(request, response)
-            }
-            if (request.url.includes("/api/photos/tags")) {
+            else if (request.url.includes("/api/photos/tags")) {
                 controllerT.getPhotoTags(request, response)
+            }
+            else if (request.url.includes("/api/photos/")) {
+                controller.returnFile(request, response)
             }
         case "POST":
             if (request.url == "/api/photos") {

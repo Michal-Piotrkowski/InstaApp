@@ -60,7 +60,7 @@ POST http://localhost:3000/api/tagsP HTTP/1.1
 PATCH http://localhost:3000/api/photos/tags HTTP/1.1
 
 {
-  "photoid": 1653841910512,
+  "photoid":1653861738516,
   "tagid": 22
 }
 
@@ -68,12 +68,12 @@ PATCH http://localhost:3000/api/photos/tags HTTP/1.1
 PATCH http://localhost:3000/api/photos/tags/mass HTTP/1.1
 
 {
-  "photoid": 1653841910512,
+  "photoid": 1653861958623,
   "array": [20,21,22]
 }
 
 ### GET - pobranie tagów danego zdjęcia
-GET http://localhost:3000/api/photos/tags/1653841910512 HTTP/1.1
+GET http://localhost:3000/api/photos/tags/1653861958623 HTTP/1.1
 
 ### GET - pobierz wszystkie TAGI SUROWE BEZ KONWERSJI
 GET http://localhost:3000/api/tags/ADMIN HTTP/1.1
@@ -84,17 +84,118 @@ GET http://localhost:3000/api/tags/ADMIN HTTP/1.1
 GET http://localhost:3000/api/filters 
 
 ### GET - dane o zdjęciu, potrzebne do jego obróbki
-GET http://localhost:3000/api/filters/metadata/1650305869815
+GET http://localhost:3000/api/filters/metadata/1653867731521
 
 ### PATCH - użycie konkretnego filtra, dane o nim przekazujemy w jsonie
 PATCH http://localhost:3000/api/filters 
 
-### GET - tego geta trzeba przemyśleć do końca może zdjęcie pobierać pod takim adresem:
-GET /uploads/nazwa_albumu/upload_a6a526ba40bc0c82f794818615184674-tint.jpg
+{
+  "id":1654078774073,
+  "filter": "tint",
+  "r":19,
+  "g":100,
+  "b":19
+}
+
+### resize
+PATCH http://localhost:3000/api/filters HTTP/1.1
+
+{
+    "id":1654078774073,
+    "filter":"resize",
+    "width": 180,
+    "height": 180
+
+}
 
 
+###obrot
+PATCH http://localhost:3000/api/filters HTTP/1.1
+
+{
+    "id":1654118809191,
+    "filter":"rotate",
+    "angle": 50
+}
 
 
+###negacja
+PATCH http://localhost:3000/api/filters HTTP/1.1
+
+{
+    "id":0,
+    "filter":"negate"
+}
+
+###reformat
+PATCH http://localhost:3000/api/filters HTTP/1.1
+
+{
+    "id":0,
+    "filter":"reformat",
+    "to":"png"
+}
+
+
+###crop
+PATCH http://localhost:3000/api/filters HTTP/1.1
+
+{
+    "id":0,
+    "filter":"crop",
+    "width": 200,
+    "height": 200,
+    "left": 20,
+    "top": 20
+}
+
+###grayscale
+PATCH http://localhost:3000/api/filters HTTP/1.1
+
+{
+    "id":0,
+    "filter":"grayscale"
+
+}
+
+
+###flip
+PATCH http://localhost:3000/api/filters HTTP/1.1
+
+{
+    "id":0,
+    "filter":"flip"
+
+}
+
+
+###flop
+PATCH http://localhost:3000/api/filters HTTP/1.1
+
+{
+    "id":0,
+    "filter":"flop"
+
+}
+
+### pobranie przerobionego zdj o id
+GET  http://localhost:3000/api/photos/uploads/album/1653861738516 HTTP/1.1
+
+// USERS
+
+
+### register usera z potwierdzeniem wysłanym na maila
+POST http://localhost:3000/api/users/register HTTP/1.1
+
+{
+  "name": "Michał",
+  "lastName": "Piotrkowski",
+  "email": "zitrox123@gmail.com",
+  "password": "Piotrkowski3"
+}
+
+### Potwierdzenie konta usera
+GET http://localhost:3000/api/user/confirm/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InppdHJveDEyM0BnbWFpbC5jb20iLCJhbnlEYXRhIjoiMTIzIiwiaWF0IjoxNjU0MTM5MzIyLCJleHAiOjE2NTQxNDI5MjJ9.EDRuiahhvFSUrpiHCt7isxqvIoh1C6cEaGGWoU5AVU4
 
 
 

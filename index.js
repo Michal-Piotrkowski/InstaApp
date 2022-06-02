@@ -2,6 +2,7 @@ const http = require('http');
 const imageRouter = require("./app/imageRouter")
 const tagsRouter = require("./app/tagsRouter")
 const filtersRouter = require("./app/filterRouter")
+const userRouter = require("./app/userRouter")
 require('dotenv').config();
 const nodemailer = require("nodemailer")
 const config = {
@@ -26,6 +27,11 @@ http.createServer(async (req, res) => {
     //filters router
     else if (req.url.search("/api/filters") != -1) {
         await filtersRouter(req, res)
+    }
+
+    //users router
+    else if (req.url.search("/api/user") != -1) {
+        await userRouter(req, res)
     }
 
 })
