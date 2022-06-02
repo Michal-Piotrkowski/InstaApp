@@ -195,7 +195,7 @@ POST http://localhost:3000/api/users/register HTTP/1.1
 }
 
 ### Potwierdzenie konta usera
-GET http://localhost:3000/api/user/confirm/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InppdHJveDEyM0BnbWFpbC5jb20iLCJhbnlEYXRhIjoiMTIzIiwiaWF0IjoxNjU0MTM5MzIyLCJleHAiOjE2NTQxNDI5MjJ9.EDRuiahhvFSUrpiHCt7isxqvIoh1C6cEaGGWoU5AVU4
+GET http://localhost:3000/api/user/confirm/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InppdHJveDEyM0BnbWFpbC5jb20iLCJhbnlEYXRhIjoiMTIzIiwiaWF0IjoxNjU0MTUyNjE2LCJleHAiOjE2NTQxNTYyMTZ9.u6wnXLh6Tnq1fH5-BusGQ7UvDZGDginREKVcDQYaAr0
 
 
 
